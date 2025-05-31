@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: theme('colors.true-white');
+    color: theme('colors.navy');
+    font-family: theme('fontFamily.sans');
+  }
+}
+
+@layer utilities {
+  .custom-practice-intelligence-layout .group-headings {
+    /* Not used yet, but placeholder if a wrapper was added inside component */
+  }
+  .custom-practice-intelligence-layout h2 {
+    position: relative; /* Already added in component, but good for specificity */
+  }
+  .custom-practice-intelligence-layout h2 span:nth-child(1) { /* "× PRACTICE ×" */
+    display: block;
+    /* Visually center this line if needed, e.g., if diagram pushes it */
+    /* margin-left: auto; margin-right: auto; max-width: fit-content; */
+  }
+  .custom-practice-intelligence-layout h2 span:nth-child(2) { /* "INTELLIGENCE" */
+    display: block;
+    /* This needs to be positioned under the diagram from the *previous* HeadingStack */
+    /* The following are highly speculative and will need refinement */
+    text-align: center;
+    /* Example: Push to right if diagram is on left, or reduce width */
+    /* margin-left: auto; */ /* Or some specific margin like ml-[100px] */
+    /* max-width: 80%; */ /* To make it appear offset by not taking full width */
+
+    /* A more direct attempt at offsetting if diagram is to the left of this text block */
+    /* Consider the diagram is about 260px wide. If centered on previous block, its right edge is at ~50% + 130px. */
+    /* This text block starts at 0 of its container. */
+    /* To appear "under the right part of diagram", it might need left margin. */
+     margin-left: auto; /* Try to push it right */
+     margin-right: auto; /* Center it in remaining space */
+     max-width: calc(100% - 130px); /* Assume diagram takes up 130px on one side */
+
+  }
+}
