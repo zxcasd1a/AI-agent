@@ -11,11 +11,11 @@ const config: Config = {
         'true-white': '#FFFFFF',
         'light-gray': '#F7F8FA',
         'cobalt-blue': '#233B90',
-        'muted-steel': '#98A4B5',
+        'muted-steel': '#64748B', // Updated for better contrast (WCAG AA with white)
       },
       fontFamily: {
-        sans: ['Avenir Next', 'Arial', 'sans-serif'],
-        display: ['Avenir Next', 'Arial', 'sans-serif'],
+        sans: ['Montserrat', 'system-ui', 'sans-serif'],
+        display: ['Montserrat', 'system-ui', 'sans-serif'],
       },
       spacing: {
         'space-s': '8px',
