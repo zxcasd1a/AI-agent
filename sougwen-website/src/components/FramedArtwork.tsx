@@ -1,6 +1,8 @@
 // src/components/FramedArtwork.tsx
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 interface FramedArtworkProps {
   src: string;
@@ -9,14 +11,26 @@ interface FramedArtworkProps {
 }
 
 const FramedArtwork: React.FC<FramedArtworkProps> = ({ src, alt, className = '' }) => {
+  const reducedMotion = useReducedMotion();
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <div
+    <motion.div
       className={`
         group relative p-[4px] bg-navy hover:bg-cobalt-blue
         transition-all duration-300 ease-out
         shadow-none hover:shadow-[10px_20px_30px_-10px_rgba(0,0,0,0.25)]
         ${className}
       `}
+      variants={!reducedMotion ? cardVariants : undefined}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }} // Using 0.3 amount for smaller elements
+      transition={{ duration: 0.5, ease: "easeOut" }}
     >
       {/* Inner white border simulation using another div with padding */}
       <div className="bg-true-white p-[1px]">

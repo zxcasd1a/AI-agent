@@ -1,4 +1,5 @@
 // src/app/page.tsx
+import Image from 'next/image'; // Ensure Image is imported
 import HeroSplit from '@/components/HeroSplit';
 import LeadStatement from '@/components/LeadStatement';
 import ThumbnailStrip from '@/components/ThumbnailStrip';
@@ -9,7 +10,11 @@ import MosaicGallery from '@/components/MosaicGallery';
 import NarrativeParagraph, { NarrativeLink } from '@/components/NarrativeParagraph';
 import QAPair from '@/components/QAPair';
 import ProjectScroller from '@/components/ProjectScroller';
-import FooterLinks from '@/components/FooterLinks'; // Import FooterLinks
+import FooterLinks from '@/components/FooterLinks';
+import SectionHeader from '@/components/SectionHeader';
+import ArticleTileGrid from '@/components/ArticleTileGrid';
+import FinalCTA from '@/components/FinalCTA';
+import TinyFooter from '@/components/TinyFooter'; // Import TinyFooter
 
 export default function Home() {
   const hero1ImageUrl = "https://images.unsplash.com/photo-1547082688-9077fe203d09?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
@@ -18,12 +23,13 @@ export default function Home() {
   const artwork1Src = "https://images.unsplash.com/photo-1506744038136-46273834b378?w=800&h=800&fit=crop&q=75"; // Placeholder
   const artwork2Src = "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800&h=800&fit=crop&q=75"; // Placeholder
   const quote2Text = "There is meaning in the data, but it’s not the meaning we are given; it’s the meaning we make.";
+  const robotImageUrl = "https://images.unsplash.com/photo-1581092916255-07b619998263?w=1200&h=800&fit=crop&q=75"; // Placeholder 3:2 image
 
   return (
     <> {/* Using Fragment as Layout already provides a main tag and structure */}
       <HeroSplit
         imageUrl={hero1ImageUrl}
-        altText="Stage portrait - figure in profile with dark studio lights"
+        altText="Stage portrait - Sougwen Chung in profile with dark studio lights at left"
         objectPosition="60% center"
         showScrollCue={true}
         height="75vh" // Explicitly pass default or desired height
@@ -69,11 +75,11 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-space-m md:gap-space-l">
             <FramedArtwork
               src={artwork1Src}
-              alt="Abstract Artwork 1"
+              alt="Framed artwork example 1"
             />
             <FramedArtwork
               src={artwork2Src}
-              alt="Abstract Artwork 2"
+              alt="Framed artwork example 2"
             />
           </div>
         </div>
@@ -101,9 +107,33 @@ export default function Home() {
 
       <FooterLinks />
 
-      <div className="h-[50vh] bg-light-gray/50"> {/* Reduced height for testing */}
-        <p className="text-center py-10">Space for Micro-footer and scroll-top button...</p>
-      </div>
+      <SectionHeader
+        line1Text="ART"
+        line1Size="text-[72px]"
+        line2Text="RESEARCH"
+        line2Size="text-[48px]"
+        showDecorator={true}
+        decoratorChar="×"
+        decoratorColor="text-cobalt-blue"
+      />
+
+      {/* Industrial Robot Photo Section */}
+      <section className="w-full bg-light-gray">
+        <div className="relative w-full aspect-[3/2]">
+          <Image
+            src={robotImageUrl}
+            alt="Industrial robot arm drawing on a canvas, with an artist crouching in the background"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+      </section>
+
+      <ArticleTileGrid />
+
+      <FinalCTA />
+
+      <TinyFooter />
     </>
   );
 }
