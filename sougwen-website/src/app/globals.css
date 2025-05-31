@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: theme('colors.true-white');
+    color: theme('colors.navy');
+    font-family: theme('fontFamily.sans');
+  }
+}
